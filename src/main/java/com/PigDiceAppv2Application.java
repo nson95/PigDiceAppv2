@@ -8,7 +8,7 @@ import java.util.Scanner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.business.Game;
+import com.pigdice.business.Game;
 
 @SpringBootApplication
 public class PigDiceAppv2Application {
@@ -20,16 +20,15 @@ public class PigDiceAppv2Application {
 		Scanner sc = new Scanner(System.in);
 		String choice="y";
 
-		List<Integer> scores = new ArrayList<>();
 		while (choice.equalsIgnoreCase("y")) {
 			System.out.print("How many games would you like to play? ");
+			List<Integer> scores = new ArrayList<>();
 			int numTurns = sc.nextInt();
 			Game g = new Game(numTurns);
 			int score = 0;
 				while (numTurns>0) {
 					int rollValue = rollOfTheDie();
 						if (rollValue!=1) {
-							numTurns+=1;
 							score+=rollValue;
 							scores.add(score);
 						} else if (rollValue==1) {
@@ -38,7 +37,7 @@ public class PigDiceAppv2Application {
 						}
 				}
 				int highScore = Collections.max(scores);
-				
+				g.setHighScore(highScore);
 			System.out.println("Your high score: " +highScore +"\n"
 								+"Overall highest score: " );
 			System.out.println();

@@ -1,4 +1,4 @@
-package com.business;
+package com.pigdice.business;
 
 import java.util.List;
 
